@@ -1,0 +1,26 @@
+//SPDX-License-Identifier: MIT
+pragma solidity ^0.8.9;
+
+contract learningModifiers
+{
+    string pass1 = "Priyanshu@123";
+    string pass2 = "Meta@pass#2004";
+    address Adrs;
+
+    modifier onlyOwner 
+    { 
+        require (Adrs == msg.sender, "Only owner can access");
+        _;
+    }
+
+    //function to input address
+    function inputAddress(address _adrs) public
+    {
+        Adrs = _adrs;
+    }
+
+    function getPass() public view onlyOwner returns(string memory, string memory) 
+    {
+        return (pass1,pass2);
+    }
+}
