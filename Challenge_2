@@ -1,0 +1,29 @@
+//SPDX-License-Identifier: MIT
+pragma solidity ^0.8.9;
+
+contract Functions
+{
+    string Str = "Priyanshu";
+    uint public Account_Balance = 0;
+
+    //View function which can read state variables but can't write them
+    function ViewType() internal view returns(string memory)
+    {
+        return Str;
+    }
+    string public View_Name = ViewType();
+    
+    //Pure Function to return sum of two numbers
+    function PureType(int _a, int _b) internal pure returns(int)
+    {
+        return _a+_b;
+    }
+    int public Sum = PureType(10,20);
+
+    //Payable function which can be used to send and receive ether
+    function Add_Money(uint _money) public payable returns(string memory)
+    {
+        Account_Balance += _money;
+        return "Money added successfully";
+    }
+}
