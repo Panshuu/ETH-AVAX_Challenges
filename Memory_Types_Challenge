@@ -1,0 +1,26 @@
+//SPDX-License-Identifier: MIT
+pragma solidity ^0.8.9;
+
+contract MemoryTypes
+{
+    //Here struct variable 'Details' is stored in storage
+    struct Details  
+    {
+        string name;
+        uint age;
+    }
+    
+    //Here a and b are state variables and are also stored in storage
+    int public a=10;
+    int public b=12;
+
+    //Here in the function, the variable 'sum' is stored temporarily in memory
+    function Add(int x) internal view returns(int)
+    {
+        int sum= x+a+b;
+        return sum;
+    }
+    
+    //Here result variable is stored in storage and the function argument is in stack
+    int public result = Add(20);
+}
